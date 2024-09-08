@@ -9,16 +9,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late HomePageController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = HomePageController(); // Inicializa el controlador
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('DialysiMetrics'),
       ),
-      drawer: CustomDrawer(), // Aquí agregas el menú lateral
-      body: Center(
-        child: Text('Bienvenido a DialysiMetrics'),
-      ),
+      drawer: CustomDrawer(),
+      body: HomePageView(
+          controller: _controller), // Inyecta la vista con el controlador
     );
   }
 }
