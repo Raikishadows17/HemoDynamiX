@@ -8,19 +8,25 @@ class HomePageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          'Bienvenido a DialysiMetrics',
-          style: TextStyle(fontSize: 24),
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Bienvenido a DialysiMetrics',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Presiona el botón + para agregar los datos de tu tratamiento.',
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
-        SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () => controller.onButtonPressed(),
-          child: Text('Presionar botón'),
-        ),
-      ],
+      ),
     );
   }
 }
