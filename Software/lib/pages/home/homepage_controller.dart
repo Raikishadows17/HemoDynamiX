@@ -24,8 +24,8 @@ class HomePageController with ChangeNotifier {
 
   final TextEditingController totalLiquidsController = TextEditingController();
 
-  void onAddDataPressed(BuildContext context) {
-    showDialog(
+  Future<void> onAddDataPressed(BuildContext context) async {
+    await showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -81,7 +81,7 @@ class HomePageController with ChangeNotifier {
             TextButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  _saveData(context);
+                  _saveData(context); // Guardar los datos
                 }
               },
               child: Text('Guardar'),
@@ -111,28 +111,50 @@ class HomePageController with ChangeNotifier {
   }
 
   Future<void> _saveData(BuildContext context) async {
-    final dbHelper = DatabaseHelper();
+    try {
+      final dbHelper = DatabaseHelper();
 
-    String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+      String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
-    Map<String, dynamic> treatmentData = {
-      'weight_pre': double.parse(weightPreController.text),
-      'weight_post': double.parse(weightPostController.text),
-      'pressure_pre_systolic': int.parse(pressurePreSystolicController.text),
-      'pressure_pre_diastolic': int.parse(pressurePreDiastolicController.text),
-      'pressure_post_systolic': int.parse(pressurePostSystolicController.text),
-      'pressure_post_diastolic':
-          int.parse(pressurePostDiastolicController.text),
-      'total_liquids': int.parse(totalLiquidsController.text),
-      'date': formattedDate, // Guardar la fecha actual
-    };
+      Map<String, dynamic> treatmentData = {
+        'weight_pre': double.parse(weightPreController.text),
+        'weight_post': double.parse(weightPostController.text),
+        'pressure_pre_systolic': int.parse(pressurePreSystolicController.text),
+        'pressure_pre_diastolic':
+            int.parse(pressurePreDiastolicController.text),
+        'pressure_post_systolic':
+            int.parse(pressurePostSystolicController.text),
+        'pressure_post_diastolic':
+            int.parse(pressurePostDiastolicController.text),
+        'total_liquids': int.parse(totalLiquidsController.text),
+        'date': formattedDate, // Guardar la fecha actual
+      };
 
-    await dbHelper.insertTreatment(treatmentData);
+      await dbHelper.insertTreatment(treatmentData);
 
-    Navigator.of(context).pop(); // Cerrar el diálogo después de guardar
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Datos guardados exitosamente')),
-    );
+      // Limpiar los controladores después de guardar
+      _clearForm();
+
+      Navigator.of(context).pop(); // Cerrar el diálogo después de guardar
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Datos guardados exitosamente')),
+      );
+    } catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error al guardar los datos')),
+      );
+    }
+  }
+
+  // Función para limpiar los campos del formulario
+  void _clearForm() {
+    weightPreController.clear();
+    weightPostController.clear();
+    pressurePreSystolicController.clear();
+    pressurePreDiastolicController.clear();
+    pressurePostSystolicController.clear();
+    pressurePostDiastolicController.clear();
+    totalLiquidsController.clear();
   }
 
   Future<void> fetchTreatments() async {
@@ -140,6 +162,7 @@ class HomePageController with ChangeNotifier {
     notifyListeners(); // Notificar a la vista para actualizarse
   }
 
+  @override
   void dispose() {
     weightPreController.dispose();
     weightPostController.dispose();
@@ -148,5 +171,6 @@ class HomePageController with ChangeNotifier {
     pressurePostSystolicController.dispose();
     pressurePostDiastolicController.dispose();
     totalLiquidsController.dispose();
+    super.dispose();
   }
 }
