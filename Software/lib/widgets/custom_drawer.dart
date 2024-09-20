@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:dialysimetrics/routes.dart';
 
 class CustomDrawer extends StatelessWidget {
+  const CustomDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
+          const DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
@@ -21,29 +23,29 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Inicio'),
+            leading: const Icon(Icons.home),
+            title: const Text('Inicio'),
             onTap: () {
               Navigator.pushReplacementNamed(context, AppRoutes.home);
             },
           ),
           ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Configuración'),
+            leading: const Icon(Icons.settings),
+            title: const Text('Configuración'),
             onTap: () {
               Navigator.pushReplacementNamed(context, AppRoutes.settings);
             },
           ),
           ListTile(
-            leading: Icon(Icons.bar_chart),
-            title: Text('Estadísticas'),
+            leading: const Icon(Icons.bar_chart),
+            title: const Text('Estadísticas'),
             onTap: () {
               Navigator.pushReplacementNamed(context, AppRoutes.stats);
             },
           ),
           ListTile(
-            leading: Icon(Icons.info),
-            title: Text('Acerca de'),
+            leading: const Icon(Icons.info),
+            title: const Text('Acerca de'),
             onTap: () {
               Navigator.pushReplacementNamed(context, AppRoutes.about);
             },

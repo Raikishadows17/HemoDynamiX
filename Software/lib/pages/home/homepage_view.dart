@@ -3,12 +3,14 @@ import 'homepage_controller.dart';
 import 'package:provider/provider.dart';
 
 class HomePageView extends StatelessWidget {
+  const HomePageView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Consumer<HomePageController>(
       builder: (ctx, controller, _) {
         if (controller.treatments.isEmpty) {
-          return Center(child: Text('No hay tratamientos registrados'));
+          return const Center(child: Text('No hay tratamientos registrados'));
         }
 
         return ListView.builder(

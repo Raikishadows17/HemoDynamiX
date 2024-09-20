@@ -5,6 +5,8 @@ import 'package:dialysimetrics/pages/home/homepage_controller.dart';
 import 'homepage_view.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -21,10 +23,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DialysiMetrics - Registro de Tratamientos'),
+        title: const Text('DialysiMetrics - Registro de Tratamientos'),
       ),
-      drawer: CustomDrawer(),
-      body: HomePageView(), // Llamar a la vista (home_view.dart)
+      drawer: const CustomDrawer(),
+      body: const HomePageView(), // Llamar a la vista (home_view.dart)
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Acción para abrir el diálogo y agregar nuevos datos
@@ -36,9 +38,9 @@ class _HomePageState extends State<HomePage> {
                 .fetchTreatments();
           });
         },
-        child: Icon(Icons.add),
         backgroundColor: Colors.blue,
         tooltip: 'Agregar Datos',
+        child: const Icon(Icons.add),
       ),
     );
   }
