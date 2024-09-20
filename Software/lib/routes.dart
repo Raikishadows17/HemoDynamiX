@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dialysimetrics/pages/home/home_page.dart';
+import 'package:dialysimetrics/pages/stats/statspage.dart';
 
 class AppRoutes {
   static const String home = '/';
@@ -10,13 +11,25 @@ class AppRoutes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.home:
-        return MaterialPageRoute(builder: (_) => HomePage());
-      case AppRoutes.settings:
-      //return MaterialPageRoute(builder: (_) => SettingsPage());
+        return MaterialPageRoute(builder: (_) => const HomePage());
       case AppRoutes.stats:
-      //return MaterialPageRoute(builder: (_) => StatsPage());
+        return MaterialPageRoute(builder: (_) => StatsPage());
+      // Implementar las rutas que aún no están definidas
+      case AppRoutes.settings:
+        return MaterialPageRoute(
+          builder: (_) => Scaffold(
+            appBar: AppBar(title: const Text('Settings')),
+            body: const Center(child: Text('Settings Page Coming Soon')),
+          ),
+        );
+
       case AppRoutes.about:
-      //return MaterialPageRoute(builder: (_) => AboutPage());
+        return MaterialPageRoute(
+          builder: (_) => Scaffold(
+            appBar: AppBar(title: const Text('About')),
+            body: const Center(child: Text('About Page Coming Soon')),
+          ),
+        );
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

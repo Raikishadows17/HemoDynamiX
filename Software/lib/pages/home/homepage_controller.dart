@@ -29,7 +29,7 @@ class HomePageController with ChangeNotifier {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Agregar Datos'),
+          title: const Text('Agregar Datos'),
           content: Form(
             key: formKey,
             child: SingleChildScrollView(
@@ -45,7 +45,7 @@ class HomePageController with ChangeNotifier {
                       Expanded(
                           child: _buildTextField('Presión Pre Sistólica (mmHg)',
                               pressurePreSystolicController)),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Expanded(
                           child: _buildTextField(
                               'Presión Pre Diastólica (mmHg)',
@@ -58,7 +58,7 @@ class HomePageController with ChangeNotifier {
                           child: _buildTextField(
                               'Presión Post Sistólica (mmHg)',
                               pressurePostSystolicController)),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Expanded(
                           child: _buildTextField(
                               'Presión Post Diastólica (mmHg)',
@@ -76,7 +76,7 @@ class HomePageController with ChangeNotifier {
               onPressed: () {
                 Navigator.of(context).pop(); // Cerrar el diálogo sin guardar
               },
-              child: Text('Cancelar'),
+              child: const Text('Cancelar'),
             ),
             TextButton(
               onPressed: () {
@@ -84,7 +84,7 @@ class HomePageController with ChangeNotifier {
                   _saveData(context); // Guardar los datos
                 }
               },
-              child: Text('Guardar'),
+              child: const Text('Guardar'),
             ),
           ],
         );
@@ -137,11 +137,11 @@ class HomePageController with ChangeNotifier {
 
       Navigator.of(context).pop(); // Cerrar el diálogo después de guardar
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Datos guardados exitosamente')),
+        const SnackBar(content: Text('Datos guardados exitosamente')),
       );
     } catch (error) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al guardar los datos')),
+        const SnackBar(content: Text('Error al guardar los datos')),
       );
     }
   }
