@@ -3,6 +3,7 @@ import 'routes.dart';
 import 'package:provider/provider.dart';
 import 'package:dialysimetrics/pages/home/homepage_controller.dart';
 import 'package:dialysimetrics/pages/stats/stats_controller.dart';
+import 'package:dialysimetrics/pages/about/about_controller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => HomePageController()),
         ChangeNotifierProvider(create: (_) => StatsPageController()),
+        ChangeNotifierProvider(create: (_) => AboutController()),
       ],
       child: MaterialApp(
         title: 'DialysiMetrics',

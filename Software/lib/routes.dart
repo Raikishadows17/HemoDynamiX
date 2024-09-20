@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dialysimetrics/pages/home/home_page.dart';
 import 'package:dialysimetrics/pages/stats/statspage.dart';
+import 'package:dialysimetrics/pages/about/about_page.dart';
 
 class AppRoutes {
   static const String home = '/';
@@ -24,12 +25,7 @@ class AppRoutes {
         );
 
       case AppRoutes.about:
-        return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            appBar: AppBar(title: const Text('About')),
-            body: const Center(child: Text('About Page Coming Soon')),
-          ),
-        );
+        return MaterialPageRoute(builder: (_) => AboutPage());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
