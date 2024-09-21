@@ -34,10 +34,6 @@ class AboutView extends StatelessWidget {
               color: Color(0xfff07b3f),
             ),
           ),
-          Text(
-            controller.developerName,
-            style: const TextStyle(fontSize: 18),
-          ),
           Card(
             margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
             child: ListTile(

@@ -23,15 +23,15 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Inicio'),
+            leading: const Icon(Icons.list),
+            title: const Text('Datos'),
             onTap: () {
               Navigator.pushReplacementNamed(context, AppRoutes.home);
             },
           ),
           ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Configuración'),
+            leading: const Icon(Icons.show_chart),
+            title: const Text('Grafico'),
             onTap: () {
               Navigator.pushReplacementNamed(context, AppRoutes.settings);
             },
@@ -44,8 +44,8 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.info),
-            title: const Text('Acerca de'),
+            leading: const Icon(Icons.person),
+            title: const Text('Niveles'),
             onTap: () {
               Navigator.pushReplacementNamed(context, AppRoutes.about);
             },

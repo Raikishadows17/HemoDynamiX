@@ -13,8 +13,15 @@ class AppRoutes {
     switch (settings.name) {
       case AppRoutes.home:
         return MaterialPageRoute(builder: (_) => const HomePage());
+      case AppRoutes.about:
+        return MaterialPageRoute(builder: (_) => AboutPage());
       case AppRoutes.stats:
-        return MaterialPageRoute(builder: (_) => StatsPage());
+        return MaterialPageRoute(
+          builder: (_) => Scaffold(
+            appBar: AppBar(title: const Text('Statics')),
+            body: const Center(child: Text('Statics Page Coming Soon')),
+          ),
+        );
       // Implementar las rutas que aún no están definidas
       case AppRoutes.settings:
         return MaterialPageRoute(
@@ -24,8 +31,6 @@ class AppRoutes {
           ),
         );
 
-      case AppRoutes.about:
-        return MaterialPageRoute(builder: (_) => AboutPage());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
