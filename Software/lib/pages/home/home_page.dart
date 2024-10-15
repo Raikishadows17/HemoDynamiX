@@ -1,3 +1,4 @@
+import 'package:dialysimetrics/pages/levels/levels_form_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:dialysimetrics/widgets/custom_drawer.dart';
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     const HomePageView(), // Página principal que muestra los tratamientos
     Center(child: Text('Gráfico')), // Página de gráfico
     Center(child: Text('Estadísticas')), // Página de estadísticas
-    Center(child: Text('Niveles')), // Página de niveles
+    const LevelsFormPage(), // Página de niveles
   ];
 
   @override

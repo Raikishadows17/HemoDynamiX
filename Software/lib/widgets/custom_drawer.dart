@@ -14,40 +14,47 @@ class CustomDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
-            child: Text(
-              'DialysiMetrics',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'DialysiMetrics',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                ),
+                SizedBox(height: 10), // Espacio entre el texto y la imagen
+                // Agregar imagen
+                Expanded(
+                  child: Image(
+                    image: AssetImage(
+                        'images/logo.png'), // Ruta de la imagen en assets
+                    fit: BoxFit.contain, // Ajustar la imagen dentro del espacio
+                  ),
+                ),
+              ],
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.list),
-            title: const Text('Datos'),
+            leading: const Icon(Icons.home),
+            title: const Text('Inicio'),
             onTap: () {
               Navigator.pushReplacementNamed(context, AppRoutes.home);
             },
           ),
           ListTile(
-            leading: const Icon(Icons.show_chart),
-            title: const Text('Grafico'),
-            onTap: () {
-              Navigator.pushReplacementNamed(context, AppRoutes.settings);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.bar_chart),
-            title: const Text('Estadísticas'),
-            onTap: () {
-              Navigator.pushReplacementNamed(context, AppRoutes.stats);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.person),
-            title: const Text('Niveles'),
+            leading: const Icon(Icons.info),
+            title: const Text('Acerca de'),
             onTap: () {
               Navigator.pushReplacementNamed(context, AppRoutes.about);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Configuración'),
+            onTap: () {
+              Navigator.pushReplacementNamed(context, AppRoutes.settings);
             },
           ),
         ],
