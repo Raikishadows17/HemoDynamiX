@@ -14,12 +14,26 @@ class CustomDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
-            child: Text(
-              'DialysiMetrics',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'DialysiMetrics',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                ),
+                SizedBox(height: 10), // Espacio entre el texto y la imagen
+                // Agregar imagen
+                Expanded(
+                  child: Image(
+                    image: AssetImage(
+                        'images/logo.png'), // Ruta de la imagen en assets
+                    fit: BoxFit.contain, // Ajustar la imagen dentro del espacio
+                  ),
+                ),
+              ],
             ),
             //add imagen
           ),
