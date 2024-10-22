@@ -9,9 +9,10 @@ class LevelsFormPage extends StatefulWidget {
 }
 
 class _LevelsFormPageState extends State<LevelsFormPage> {
-  final _systolicValueController = TextEditingController();
-  final _diastolicValueController = TextEditingController();
-  final _descriptionController = TextEditingController();
+  final _systolicValueController =
+      TextEditingController(); // Controlador para el valor sistólico
+  final _diastolicValueController =
+      TextEditingController(); // Controlador para el valor diastólico
   final DatabaseHelper dbHelper = DatabaseHelper();
 
   String? _selectedSystolicLevel;
@@ -38,6 +39,7 @@ class _LevelsFormPageState extends State<LevelsFormPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Nivel Sistólico
               const Text(
                 'Selecciona el nivel de Presión Sistólica',
                 style: TextStyle(fontSize: 16),
@@ -60,6 +62,7 @@ class _LevelsFormPageState extends State<LevelsFormPage> {
                 ),
               ),
               const SizedBox(height: 20),
+              // Valor Sistólico
               TextField(
                 controller: _systolicValueController,
                 keyboardType: TextInputType.number,
@@ -69,6 +72,8 @@ class _LevelsFormPageState extends State<LevelsFormPage> {
                 ),
               ),
               const SizedBox(height: 20),
+
+              // Nivel Diastólico
               const Text(
                 'Selecciona el nivel de Presión Diastólica',
                 style: TextStyle(fontSize: 16),
@@ -91,6 +96,7 @@ class _LevelsFormPageState extends State<LevelsFormPage> {
                 ),
               ),
               const SizedBox(height: 20),
+              // Valor Diastólico
               TextField(
                 controller: _diastolicValueController,
                 keyboardType: TextInputType.number,
@@ -100,6 +106,8 @@ class _LevelsFormPageState extends State<LevelsFormPage> {
                 ),
               ),
               const SizedBox(height: 20),
+
+              // Botón para guardar los niveles
               ElevatedButton(
                 onPressed: _saveLevels,
                 child: const Text('Guardar Niveles'),
@@ -113,6 +121,7 @@ class _LevelsFormPageState extends State<LevelsFormPage> {
 
   // Método para guardar los niveles en la base de datos
   Future<void> _saveLevels() async {
+    // Validar que los campos estén completos
     if (_selectedSystolicLevel == null ||
         _selectedDiastolicLevel == null ||
         _systolicValueController.text.isEmpty ||
